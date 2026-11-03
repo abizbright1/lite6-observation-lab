@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "template_only": true,
+  "dataset_id": null,
+  "session_id": null,
+  "session_date": null,
+  "operator_role": null,
+  "physical_operation_authorization_reference": null,
+  "mode": "offline_or_passive_or_shadow_or_physical_pilot",
+  "equipment_inventory_verified": false,
+  "device_models": {},
+  "software_versions": {},
+  "calibration_hashes": {},
+  "raw_file_hashes": {},
+  "frame_conventions": {
+    "base_frame": null,
+    "tool_frame": null,
+    "camera_frame": null,
+    "reference_frame": null,
+    "translation_units": "mm",
+    "angle_units": "rad",
+    "transform_naming": "T_B_C maps camera coordinates into base coordinates"
+  },
+  "fixed_geometry": {
+    "plane_height_mm": null,
+    "observation_height_mm": null,
+    "orientation_rad": null,
+    "validated_workspace_description": null
+  },
+  "clocks": [
+    {
+      "clock_id": null,
+      "device_or_process": null,
+      "monotonic": null,
+      "native_units": null,
+      "time_zero_or_epoch": null,
+      "timestamp_source": null,
+      "exposure_convention": null,
+      "reset_session_id": null
+    }
+  ],
+  "clock_mappings": [
+    {
+      "from_clock_id": null,
+      "to_clock_id": null,
+      "mapping_model": null,
+      "parameters": null,
+      "uncertainty_type": null,
+      "uncertainty_s": null,
+      "validation_evidence": null
+    }
+  ],
+  "reference_measurement": {
+    "method": null,
+    "independence_justification": null,
+    "uncertainty_type": null,
+    "position_uncertainty_mm": null,
+    "timing_uncertainty_s": null,
+    "calibration_evidence": null
+  },
+  "data_split": {
+    "partition": "development_or_calibration_or_test",
+    "grouping_unit": "whole session/run",
+    "frozen_before_test": false
+  },
+  "missing_value_convention": "Empty CSV field means unavailable or not applicable; record missing_reason. Never replace unknown time by zero.",
+  "replay": {
+    "is_replay": false,
+    "original_dataset_sha256": null,
+    "seed": null,
+    "config_sha256": null,
+    "injection_ledger_evaluator_only": true
+  },
+  "outcome_definition": {
+    "tolerance_type": null,
+    "tolerance_mm": null,
+    "physical_event": null,
+    "indeterminate_policy": "Preserve reference-ambiguous and missing-reference outcomes; do not count as success."
+  },
+  "deviations": []
+}

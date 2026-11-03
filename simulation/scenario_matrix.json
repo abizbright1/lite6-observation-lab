@@ -1,0 +1,62 @@
+[
+  {
+    "name": "nominal_motion",
+    "in_contract": true,
+    "purpose": "bounded delay, bias, scale, noise and constant camera translation"
+  },
+  {
+    "name": "stationary_null",
+    "in_contract": true,
+    "purpose": "zero velocity: old pixels alone do not imply position error"
+  },
+  {
+    "name": "delay_jitter",
+    "in_contract": true,
+    "purpose": "larger variable transport delay; same clock contract"
+  },
+  {
+    "name": "drop_duplicate_reorder",
+    "in_contract": true,
+    "purpose": "loss, retransmission and out-of-order arrival; sequence guards"
+  },
+  {
+    "name": "clock_bounds_edge",
+    "in_contract": true,
+    "purpose": "offset/drift near declared mapping bound"
+  },
+  {
+    "name": "calibration_bounds_edge",
+    "in_contract": true,
+    "purpose": "bias/scale near declared support boundary"
+  },
+  {
+    "name": "observable_wrong_id",
+    "in_contract": true,
+    "purpose": "reported marker ID differs: all methods reject it"
+  },
+  {
+    "name": "hidden_wrong_association",
+    "in_contract": false,
+    "purpose": "wrong feature carries expected ID; no oracle detection"
+  },
+  {
+    "name": "wrong_clock_bounds",
+    "in_contract": false,
+    "purpose": "actual clock mapping exceeds frozen bound"
+  },
+  {
+    "name": "wrong_calibration_bounds",
+    "in_contract": false,
+    "purpose": "actual spatial bias exceeds frozen bound"
+  },
+  {
+    "name": "noise_outlier",
+    "in_contract": false,
+    "purpose": "noise exceeds deterministic support"
+  },
+  {
+    "name": "unmodelled_acceleration",
+    "in_contract": false,
+    "purpose": "constant-velocity observation model is violated"
+  }
+]

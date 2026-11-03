@@ -1,0 +1,20 @@
+{
+  "source": "Existing local lite6-lab-control assets; upstream attribution in retained license files",
+  "physical_station_calibration_copied": false,
+  "assets": {
+    "vendor/OrbitControls.js": "5a44a9e86a2a0fb11933eed69bc2cd33c76a496854c1aed6ed776efa87d7b064",
+    "vendor/STLLoader.js": "896d006a48b8f125385a485ccae154dadee801a953f0b45ceffe7ddd8a29ca93",
+    "vendor/three-LICENSE.txt": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "vendor/three.module.min.js": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6",
+    "meshes/LICENSE-xarm_ros2.txt": "9418ecbc9674d4da717181a4cff4288f4953a0b473097915ac0bac175af11413",
+    "meshes/link1.stl": "41d28af66c2fbd6a93b9fb5f9cfceb3c1de1f021928006871ae4e9d813f8459a",
+    "meshes/link2.stl": "d082d23629f1fe619bfc664208039e177cf774a6f953c2c1722aec20edd73ca4",
+    "meshes/link3.stl": "ff11c8164bb932cfdfedf27f875e5d5bd3ae13df128c44809da1bf15b712d759",
+    "meshes/link4.stl": "902ef2e6c6f66f0fa72b8b7e242ea75ea85af7dfd35581997ceaf475e25a4954",
+    "meshes/link5.stl": "3e0c201146a4444a08493d83a273f81b0298a723186a2bb27ede21c574237a41",
+    "meshes/link6.stl": "36a7bad22997a0938884485997f026b602bd952674a22d3a8e47cc160cde70d8",
+    "meshes/link_base.stl": "84f69488a1de60c76c23f83b1759ed76e9235bd56b4b98b4c997c24c18ba7b42",
+    "meshes/vacuum_gripper_lite.stl": "59304e495ac9cd02a569dc3bebef7c3043f29932a1223545063a31bc17e0da20",
+    "kinematics.js": "93cb9577141f7f6e826e27347787e78c027bb0c6329876a3df70c2e4be586a67"
+  }
+}

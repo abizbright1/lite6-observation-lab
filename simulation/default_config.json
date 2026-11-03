@@ -1,0 +1,28 @@
+{
+  "seed": 20261103,
+  "episodes_per_split": {
+    "train": 12,
+    "calibration": 12,
+    "test": 40
+  },
+  "command_mm": [
+    100.0,
+    100.0
+  ],
+  "tolerance_per_axis_mm": 3.0,
+  "bias_bound_mm": 0.6,
+  "scale_bound_fraction": 0.002,
+  "noise_bound_mm": 0.1,
+  "reference_bound_mm": 0.05,
+  "clock_offset_nominal_s": 0.01,
+  "clock_offset_error_bound_s": 0.003,
+  "clock_drift_bound_ppm": 25.0,
+  "max_age_s": 0.15,
+  "decision_times_relative_s": [
+    0.14,
+    0.2,
+    0.26
+  ],
+  "actuation_error_bound_mm": 0.15,
+  "action_duration_s": 0.08
+}

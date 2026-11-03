@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Position uncertainty teaching explorer</title>
+<style>body{font:17px/1.6 system-ui,sans-serif;color:#202b33;background:#f3f6f8;margin:0}main{max-width:900px;margin:30px auto;padding:32px;background:white;border-radius:10px}h1{font-size:28px;line-height:1.25}label{display:block;margin:18px 0}input{display:block;width:100%;margin-top:8px}output{font-variant-numeric:tabular-nums}svg{width:100%;height:auto}#verdict{font-size:22px;font-weight:600}code{font-size:15px}.note{color:#465761}@media(max-width:600px){main{margin:0;padding:20px}h1{font-size:25px}}</style></head>
+<body><main id="error-explorer"><h1>When does the possible target fit the task?</h1>
+<p>A static target is seen by a translating camera. An old image is combined with the current camera position. The apparent target is fixed at <strong>102 mm</strong> and the proposed tool position at <strong>100 mm</strong>.</p>
+<p><code>X = 102 − velocity × age − bias − noise</code>. Age has a fixed lower bound of 20 ms. Noise is assumed within ±0.1 mm.</p>
+<label for="speed">Signed camera velocity: <output id="speed-value">60</output> mm/s<input id="speed" type="range" min="-150" max="150" value="60" step="5"></label>
+<label for="age">Upper age bound: <output id="age-value">60</output> ms<input id="age" type="range" min="20" max="150" value="60" step="5"></label>
+<label for="bias">Bias bound: ±<output id="bias-value">0.6</output> mm<input id="bias" type="range" min="0" max="3" value="0.6" step="0.1"></label>
+<label for="tolerance">Task tolerance: ±<output id="tolerance-value">3.0</output> mm<input id="tolerance" type="range" min="0.5" max="6" value="3" step="0.1"></label>
+<svg viewBox="0 0 700 200" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Possible actual target positions and acceptable task region</title><desc id="plot-description">The interval admitted by the model is compared with the acceptable region around the proposed command. All positions must lie within the acceptable region to approve.</desc>
+<line x1="45" y1="140" x2="655" y2="140" stroke="#566572"/>
+<rect id="allowed" y="52" height="65" fill="#cdebdc"/>
+<line id="command" y1="35" y2="140" stroke="#324d40" stroke-width="2"/>
+<line id="interval-line" y1="85" y2="85" stroke="#1f6391" stroke-width="7"/>
+<circle id="apparent" cy="125" r="5" fill="#b25824"/>
+<text id="low-label" y="38" text-anchor="middle" font-size="15"/>
+<text id="high-label" y="38" text-anchor="middle" font-size="15"/>
+<text id="left-tick" x="45" y="163" text-anchor="middle" font-size="14"/>
+<text id="right-tick" x="655" y="163" text-anchor="middle" font-size="14"/>
+<text x="350" y="192" text-anchor="middle" font-size="15">Possible actual target position in mm</text></svg>
+<p>Blue segment: possible target positions. Green area: acceptable region around 100 mm. Orange point: apparent estimate 102 mm.</p>
+<div aria-live="polite"><p id="interval-summary"></p><p id="verdict"></p><p id="point-summary"></p></div>
+<p class="note">Teaching values only. This is ordinary arithmetic for an assumed scalar model, not a robot controller, physical safety certificate or validation of the assumptions. Changing the tolerance here does not justify changing a laboratory limit.</p>
+<p>Try a 2 mm tolerance, then set velocity to zero. Explain why the result changes, and what calibration uncertainty remains. An old image of a stationary scene is not automatically invalid.</p>
+</main><script>
+(() => {
+ const root=document.getElementById('error-explorer');
+ const get=id=>root.querySelector('#'+id);
+ function update(){
+  const v=Number(get('speed').value), hi=Number(get('age').value)/1000;
+  const b=Number(get('bias').value), tol=Number(get('tolerance').value);
+  get('speed-value').value=String(v);get('age-value').value=String(hi*1000);
+  get('bias-value').value=b.toFixed(1);get('tolerance-value').value=tol.toFixed(1);
+  const candidates=[];
+  for(const age of [.020,hi])for(const bias of [-b,b])for(const n of [-.1,.1])candidates.push(102-v*age-bias-n);
+  const lo=Math.min(...candidates), upper=Math.max(...candidates), worst=Math.max(Math.abs(lo-100),Math.abs(upper-100));
+  const xmin=Math.min(lo,100-tol,102)-2,xmax=Math.max(upper,100+tol,102)+2;
+  const x=p=>45+610*(p-xmin)/(xmax-xmin);
+  get('allowed').setAttribute('x',x(100-tol));get('allowed').setAttribute('width',x(100+tol)-x(100-tol));
+  for(const attr of ['x1','x2'])get('command').setAttribute(attr,x(100));
+  get('interval-line').setAttribute('x1',x(lo));get('interval-line').setAttribute('x2',x(upper));
+  get('apparent').setAttribute('cx',x(102));
+  get('low-label').setAttribute('x',x(lo));get('low-label').textContent=lo.toFixed(1);
+  get('high-label').setAttribute('x',x(upper));get('high-label').textContent=upper.toFixed(1);
+  if(x(upper)-x(lo)<65){get('high-label').setAttribute('y','23');}else{get('high-label').setAttribute('y','38');}
+  get('left-tick').textContent=xmin.toFixed(1);get('right-tick').textContent=xmax.toFixed(1);
+  get('interval-summary').textContent='Possible X: ['+lo.toFixed(2)+', '+upper.toFixed(2)+'] mm. Worst discrepancy from 100 mm: '+worst.toFixed(2)+' mm.';
+  get('verdict').textContent=worst<=tol+1e-12?'All admitted positions fit the chosen tolerance.':'Some admitted positions fall outside the chosen tolerance.';
+  get('point-summary').textContent='A point-only check sees |102 − 100| = 2 mm and '+(2<=tol?'passes':'fails')+' this tolerance.';
+ }
+ for(const input of root.querySelectorAll('input'))input.addEventListener('input',update);
+ update();
+})();
+</script></body></html>

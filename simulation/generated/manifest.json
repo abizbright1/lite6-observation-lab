@@ -1,0 +1,13 @@
+{
+  "files": {
+    "config.json": "faf87f86cc49e7af04f2e1ba041dc62149b4af6218a54e2d3764f71f73d7be36",
+    "decisions.csv": "5d4c53f98f558264e6bc0df4333b88a23f40cdb3601a57a2549dffd6487ec4cc",
+    "evaluation.csv": "fff08572bead29e5d70cf6035bd424be838411ed5c12d699a2f8a3077a69851a",
+    "observations.csv": "3d7d14477ab00ce9a6ea4bc24e46149360559613df6c4c79183e0b5d093aff94",
+    "summary.json": "0b44ef1c7dd6f2fe58160f7f43b4d8239933631369aa1a633f770ba5b7cc3965",
+    "truth.csv": "6a97e69d0622a198cb13c6eb9c28d8e6aff20848a7875764ee28a6bde83680c9"
+  },
+  "generator_sha256": "90e637ccb885d778901b4a525739cca9bd5605b7f9cad8b4b26f89440cdcd3ac",
+  "format": 1,
+  "synthetic_only": true
+}
