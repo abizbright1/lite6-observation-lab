@@ -12,6 +12,6 @@ The 3D view runs in the browser. GitHub Pages serves assets, so no laptop web se
 
 ## Provenance and updates
 
-The site is generated from an allowlist in the private research source repository. Updates must be rebuilt, checked and copied here; private source is never published wholesale. `SITE_MANIFEST.json` records the artifact's file hashes. `.nojekyll` preserves the static module and mesh files. The site is published from the main branch root.
+The site is generated from an allowlist in the private research source repository. Updates must be rebuilt, checked and copied here; private source is never published wholesale. `site-manifest.json` records the artifact's file hashes. `.nojekyll` preserves the static module and mesh files. The site is published from the main branch root.
 
 UFACTORY meshes retain their BSD license and Three.js its MIT license. [Detailed asset provenance](simulation/scene3d/ASSET_SOURCES.html). The camera mount and laboratory arrangement are illustrative, not calibrated physical measurements. No dynamics/contact, collision-safety or doctoral novelty claim is made.
